@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../utils/constants';
 
@@ -14,6 +15,7 @@ const getLinkStyle: GetLinkStyle = ({ isActive }) =>
     : ({ textDecoration: 'none' });
 
 const NavigationBar: React.FC = () => {
+  const { i18n } = useTranslation()
   return (
     <div>
       <NavLink to={ROUTES.HOME} style={getLinkStyle}>
@@ -25,6 +27,10 @@ const NavigationBar: React.FC = () => {
       <NavLink to={ROUTES.CONTACT} style={getLinkStyle}>
         contact
       </NavLink>
+      <div>
+        <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+        <button onClick={() => i18n.changeLanguage('fi')}>FI</button>
+      </div>
     </div>
   );
 };
