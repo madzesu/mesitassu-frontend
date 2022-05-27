@@ -1,8 +1,11 @@
 import React from 'react';
+import Typography from '../../Typography';
 
 const ContactPage: React.FC = () => {
   return (
-    <div>contact page</div>
+    <div>
+      <Typography variant="h2">Contact page</Typography>
+    </div>
   );
 };
 

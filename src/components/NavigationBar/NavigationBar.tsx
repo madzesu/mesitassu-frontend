@@ -1,66 +1,70 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createUseStyles } from 'react-jss';
-import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../utils/constants';
+import { useLocation } from 'react-router-dom';
+import { LANGUAGES, ROUTES } from '../../utils/constants';
+import Button from '../Button';
+import NavigationLink from '../NavigationLink';
+import Typography from '../Typography';
 
 const useStyles = createUseStyles((theme) => ({
-  languageButton: {
-    width: theme.spacing(7.5),
-    height: theme.spacing(7.5),
-    color: theme.colors.white,
-    fontSize: 16,
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    border: 'none',
-    borderRadius: theme.borderRadius.default,
-    padding: `${theme.spacing()}px ${theme.spacing(1.5)}px`,
-    margin: `${theme.spacing()}px ${theme.spacing(1.5)}px`,
-    background: theme.colors.primary.main,
-    transition: 'all 0.3s ease-in-out',
-    boxShadow: theme.boxShadow.flat,
-    '&.active': {
-      boxShadow: theme.boxShadow.pressed,
-    },
+  container: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
+  },
+  linksContainer: {
+    display: 'flex',
+    alignItems: 'center',
   },
 }));
 
-type LinkStyleArgs = {
-  isActive: boolean
-}
-
-type GetLinkStyle = (options: LinkStyleArgs) => CSSProperties;
-
-const getLinkStyle: GetLinkStyle = ({ isActive }) =>
-  isActive
-    ? ({ textDecoration: 'underline' })
-    : ({ textDecoration: 'none' });
-
 const NavigationBar: React.FC = () => {
   const { i18n } = useTranslation();
-  const selectedLanguage = i18n.language;
+  const location = useLocation()
   const classes = useStyles();
 
+  const handleLanguageChange = (languageKey: string) => {
+    i18n.changeLanguage(languageKey);
+  };
+
   const getButtonProps = (languageKey: string) => ({
-    onClick: () => i18n.changeLanguage(languageKey),
-    className: [classes.languageButton, selectedLanguage === languageKey ? 'active' : ''].join(' '),
-    children: <span>{languageKey}</span>
-  })
+    onClick: () => handleLanguageChange(languageKey),
+    pressed: i18n.language === languageKey,
+    children: (
+      <Typography
+        variant="button"
+        pressed={i18n.language === languageKey}
+      >
+        {languageKey}
+      </Typography>
+    ),
+  });
+
+  const isActive = (routePath: string) => {
+    console.log('location.pathname', location.pathname);
+    if (location.pathname === '/' && routePath === ROUTES.HOME) {
+      return true;
+    }
+    return routePath !== ROUTES.HOME && location.pathname.includes(routePath);
+  };
 
   return (
-    <div>
-      <NavLink to={ROUTES.HOME} style={getLinkStyle}>
-        home
-      </NavLink>
-      <NavLink to={ROUTES.ABOUT} style={getLinkStyle}>
-        about
-      </NavLink>
-      <NavLink to={ROUTES.CONTACT} style={getLinkStyle}>
-        contact
-      </NavLink>
+    <div className={classes.container}>
+      <div className={classes.linksContainer}>
+        <NavigationLink to={ROUTES.HOME} isActive={isActive(ROUTES.HOME)}>
+          home
+        </NavigationLink>
+        <NavigationLink to={ROUTES.ABOUT} isActive={isActive(ROUTES.ABOUT)}>
+          about
+        </NavigationLink>
+        <NavigationLink to={ROUTES.CONTACT} isActive={isActive(ROUTES.CONTACT)}>
+          contact
+        </NavigationLink>
+      </div>
       <div>
-        <button {...getButtonProps('en')} />
-        <button {...getButtonProps('fi')} />
+        <Button {...getButtonProps(LANGUAGES.EN)} />
+        <Button {...getButtonProps(LANGUAGES.FI)} />
       </div>
     </div>
   );
