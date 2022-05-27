@@ -15,6 +15,7 @@ type Colors = {
   secondary: SecondaryColors
   tertiary: TertiaryColors
   transparent: string
+  white: string
 };
 
 declare const colors: Colors;

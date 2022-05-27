@@ -1,5 +1,5 @@
 const borderRadius = {
-  default: 4,
+  default: 8,
 };
 
 export default borderRadius;

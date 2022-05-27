@@ -29,6 +29,7 @@ const colors = {
   tertiary,
   border,
   transparent: 'transparent',
+  white: '#e8e8e8',
 };
 
 export default colors;
