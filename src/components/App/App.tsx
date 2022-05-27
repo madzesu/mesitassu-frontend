@@ -1,12 +1,13 @@
 import React from 'react';
-import AppRouter from '../AppRouter';
-import './App.css';
+import { ThemeProvider } from 'react-jss';
+import theme from '../../utils/theme';
+import AppContent from './AppContent';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <AppRouter />
-    </div>
+    <ThemeProvider theme={theme}>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 
