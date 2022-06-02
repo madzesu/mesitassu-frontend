@@ -1,5 +1,5 @@
 import React from 'react';
-import Typography from '../../Typography';
+import Typography from 'components/Typography';
 
 const ContactPage: React.FC = () => {
   return (

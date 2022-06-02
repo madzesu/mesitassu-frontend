@@ -2,10 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createUseStyles } from 'react-jss';
 import { useLocation } from 'react-router-dom';
-import { LANGUAGES, ROUTES } from '../../utils/constants';
-import Button from '../Button';
-import NavigationLink from '../NavigationLink';
-import Typography from '../Typography';
+import { LANGUAGES, ROUTES } from 'utils/constants';
+import Button from 'components/Button';
+import NavigationLink from 'components/NavigationLink';
+import Typography from 'components/Typography';
 
 const useStyles = createUseStyles((theme) => ({
   container: {

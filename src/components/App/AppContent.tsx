@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import AppRouter from '../AppRouter';
+import AppRouter from 'components/AppRouter';
 import './App.css';
 
 const useStyles = createUseStyles(theme => ({

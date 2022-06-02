@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Typography from '../../Typography';
+import Typography from 'components/Typography';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
