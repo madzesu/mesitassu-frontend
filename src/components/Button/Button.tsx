@@ -17,7 +17,7 @@ const useStyles = createUseStyles(({
     background: colors.primary.main,
     cursor: 'pointer',
     transition: 'all 0.3s ease-in-out',
-    color: colors.primary.main,
+    color: colors.primary.light,
     boxShadow: boxShadow.flat,
     '&.pressed': {
       boxShadow: boxShadow.pressed,

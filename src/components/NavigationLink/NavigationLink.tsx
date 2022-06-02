@@ -5,11 +5,12 @@ import { NavLink, NavLinkProps } from 'react-router-dom';
 
 interface NavigationLinkProps extends NavLinkProps {
   isActive?: boolean
+  className?: string
 }
 
 const useStyles = createUseStyles(({ colors, spacing, boxShadow, borderRadius }) => ({
   link: {
-    color: colors.primary.main,
+    color: colors.primary.light,
     textDecoration: 'none',
     textAlign: 'center',
     minWidth: spacing(14),
@@ -28,12 +29,20 @@ const useStyles = createUseStyles(({ colors, spacing, boxShadow, borderRadius })
   },
 }));
 
-const NavigationLink: React.FC<NavigationLinkProps> = ({ isActive, ...props }) => {
+const NavigationLink: React.FC<NavigationLinkProps> = ({ isActive, className, ...props }) => {
   const classes = useStyles();
   const omittedProps = omit(props, ['isActive']) as NavLinkProps
 
+  const classNames = [classes.link];
+  if (isActive) {
+    classNames.push('pressed');
+  }
+  if (className) {
+    classNames.push(className);
+  }
+
   return (
-    <NavLink className={[classes.link, isActive ? 'pressed' : ''].join(' ')} {...omittedProps} />
+    <NavLink className={classNames.join(' ')} {...omittedProps} />
   );
 };
 

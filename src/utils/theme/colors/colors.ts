@@ -1,12 +1,12 @@
 const primary = {
   main: '#c79848',
-  light: 'lightgreen',
+  light: '#ffcd79',
   dark: 'darkgreen',
 };
 
 const secondary = {
-  main: 'red',
-  light: 'lightred',
+  main: '#328b7d',
+  light: '#328b7d',
   dark: 'darkred',
 };
 

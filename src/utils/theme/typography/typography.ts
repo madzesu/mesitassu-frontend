@@ -7,7 +7,7 @@ const typography = {
       -4px -4px 8px rgba(255, 255, 225, 0.35),
       4px 4px 8px rgba(0, 0, 0, 0.35)
     `,
-    color: colors.primary.main,
+    color: colors.primary.light,
   },
   h2: {
     fontSize: '3.75rem',
@@ -15,7 +15,7 @@ const typography = {
       -3px -3px 6px rgba(255, 255, 225, 0.35),
       3px 3px 6px rgba(0, 0, 0, 0.35)
     `,
-    color: colors.primary.main,
+    color: colors.primary.light,
   },
   h3: {},
   h4: {},
